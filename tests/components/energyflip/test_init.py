@@ -1,9 +1,9 @@
-"""Test cases for the initialisation of the Huisbaasje integration."""
+"""Test cases for the initialisation of the EnergyFlip integration."""
 from unittest.mock import patch
 
-from huisbaasje import HuisbaasjeException
+from energyFlip import EnergyFlipException
 
-from homeassistant.components import huisbaasje
+from homeassistant.components import energyflip
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import CONF_ID, CONF_PASSWORD, CONF_USERNAME, STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
@@ -16,25 +16,25 @@ from tests.common import MockConfigEntry
 
 async def test_setup(hass: HomeAssistant):
     """Test for successfully setting up the platform."""
-    assert await async_setup_component(hass, huisbaasje.DOMAIN, {})
+    assert await async_setup_component(hass, energyflip.DOMAIN, {})
     await hass.async_block_till_done()
-    assert huisbaasje.DOMAIN in hass.config.components
+    assert energyflip.DOMAIN in hass.config.components
 
 
 async def test_setup_entry(hass: HomeAssistant):
     """Test for successfully setting a config entry."""
     with patch(
-        "huisbaasje.Huisbaasje.authenticate", return_value=None
+        "energyflip.EnergyFlip.authenticate", return_value=None
     ) as mock_authenticate, patch(
-        "huisbaasje.Huisbaasje.is_authenticated", return_value=True
+        "energyflip.EnergyFlip.is_authenticated", return_value=True
     ) as mock_is_authenticated, patch(
-        "huisbaasje.Huisbaasje.current_measurements",
+        "energyflip.EnergyFlip.current_measurements",
         return_value=MOCK_CURRENT_MEASUREMENTS,
     ) as mock_current_measurements:
-        hass.config.components.add(huisbaasje.DOMAIN)
+        hass.config.components.add(energyflip.DOMAIN)
         config_entry = MockConfigEntry(
             version=1,
-            domain=huisbaasje.DOMAIN,
+            domain=energyflip.DOMAIN,
             title="userId",
             data={
                 CONF_ID: "userId",
@@ -51,9 +51,9 @@ async def test_setup_entry(hass: HomeAssistant):
 
         # Assert integration is loaded
         assert config_entry.state is ConfigEntryState.LOADED
-        assert huisbaasje.DOMAIN in hass.config.components
-        assert huisbaasje.DOMAIN in hass.data
-        assert config_entry.entry_id in hass.data[huisbaasje.DOMAIN]
+        assert energyflip.DOMAIN in hass.config.components
+        assert energyflip.DOMAIN in hass.data
+        assert config_entry.entry_id in hass.data[energyflip.DOMAIN]
 
         # Assert entities are loaded
         entities = hass.states.async_entity_ids("sensor")
@@ -68,12 +68,12 @@ async def test_setup_entry(hass: HomeAssistant):
 async def test_setup_entry_error(hass: HomeAssistant):
     """Test for successfully setting a config entry."""
     with patch(
-        "huisbaasje.Huisbaasje.authenticate", side_effect=HuisbaasjeException
+        "energyflip.EnergyFlip.authenticate", side_effect=EnergyFlipException
     ) as mock_authenticate:
-        hass.config.components.add(huisbaasje.DOMAIN)
+        hass.config.components.add(energyflip.DOMAIN)
         config_entry = MockConfigEntry(
             version=1,
-            domain=huisbaasje.DOMAIN,
+            domain=energyflip.DOMAIN,
             title="userId",
             data={
                 CONF_ID: "userId",
@@ -90,7 +90,7 @@ async def test_setup_entry_error(hass: HomeAssistant):
 
         # Assert integration is loaded with error
         assert config_entry.state is ConfigEntryState.SETUP_ERROR
-        assert huisbaasje.DOMAIN not in hass.data
+        assert energyflip.DOMAIN not in hass.data
 
         # Assert entities are not loaded
         entities = hass.states.async_entity_ids("sensor")
@@ -103,17 +103,17 @@ async def test_setup_entry_error(hass: HomeAssistant):
 async def test_unload_entry(hass: HomeAssistant):
     """Test for successfully unloading the config entry."""
     with patch(
-        "huisbaasje.Huisbaasje.authenticate", return_value=None
+        "energyflip.EnergyFlip.authenticate", return_value=None
     ) as mock_authenticate, patch(
-        "huisbaasje.Huisbaasje.is_authenticated", return_value=True
+        "energyflip.EnergyFlip.is_authenticated", return_value=True
     ) as mock_is_authenticated, patch(
-        "huisbaasje.Huisbaasje.current_measurements",
+        "energyflip.EnergyFlip.current_measurements",
         return_value=MOCK_CURRENT_MEASUREMENTS,
     ) as mock_current_measurements:
-        hass.config.components.add(huisbaasje.DOMAIN)
+        hass.config.components.add(energyflip.DOMAIN)
         config_entry = MockConfigEntry(
             version=1,
-            domain=huisbaasje.DOMAIN,
+            domain=energyflip.DOMAIN,
             title="userId",
             data={
                 CONF_ID: "userId",

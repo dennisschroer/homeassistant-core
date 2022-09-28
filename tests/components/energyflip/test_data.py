@@ -1,4 +1,4 @@
-"""Test data for the tests of the Huisbaasje integration."""
+"""Test data for the tests of the EnergyFlip integration."""
 MOCK_CURRENT_MEASUREMENTS = {
     "electricity": {
         "measurement": {

@@ -165,7 +165,7 @@ FLOWS = {
         "honeywell",
         "huawei_lte",
         "hue",
-        "huisbaasje",
+        "energyflip",
         "hunterdouglas_powerview",
         "hvv_departures",
         "hyperion",

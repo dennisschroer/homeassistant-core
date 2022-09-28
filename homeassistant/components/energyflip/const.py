@@ -1,5 +1,5 @@
-"""Constants for the Huisbaasje integration."""
-from huisbaasje.const import (
+"""Constants for the EnergyFlip integration."""
+from energyflip.const import (
     SOURCE_TYPE_ELECTRICITY,
     SOURCE_TYPE_ELECTRICITY_IN,
     SOURCE_TYPE_ELECTRICITY_IN_LOW,
@@ -13,11 +13,11 @@ from homeassistant.const import ENERGY_KILO_WATT_HOUR, TIME_HOURS, VOLUME_CUBIC_
 
 DATA_COORDINATOR = "coordinator"
 
-DOMAIN = "huisbaasje"
+DOMAIN = "energyflip"
 
 FLOW_CUBIC_METERS_PER_HOUR = f"{VOLUME_CUBIC_METERS}/{TIME_HOURS}"
 
-"""Interval in seconds between polls to huisbaasje."""
+"""Interval in seconds between polls to energyFlip."""
 POLLING_INTERVAL = 20
 
 """Timeout for fetching sensor data"""
@@ -40,32 +40,32 @@ SOURCE_TYPES = [
 
 SENSORS_INFO = [
     {
-        "name": "Huisbaasje Current Power",
+        "name": "EnergyFlip Current Power",
         "device_class": SensorDeviceClass.POWER,
         "source_type": SOURCE_TYPE_ELECTRICITY,
     },
     {
-        "name": "Huisbaasje Current Power In Peak",
+        "name": "EnergyFlip Current Power In Peak",
         "device_class": SensorDeviceClass.POWER,
         "source_type": SOURCE_TYPE_ELECTRICITY_IN,
     },
     {
-        "name": "Huisbaasje Current Power In Off Peak",
+        "name": "EnergyFlip Current Power In Off Peak",
         "device_class": SensorDeviceClass.POWER,
         "source_type": SOURCE_TYPE_ELECTRICITY_IN_LOW,
     },
     {
-        "name": "Huisbaasje Current Power Out Peak",
+        "name": "EnergyFlip Current Power Out Peak",
         "device_class": SensorDeviceClass.POWER,
         "source_type": SOURCE_TYPE_ELECTRICITY_OUT,
     },
     {
-        "name": "Huisbaasje Current Power Out Off Peak",
+        "name": "EnergyFlip Current Power Out Off Peak",
         "device_class": SensorDeviceClass.POWER,
         "source_type": SOURCE_TYPE_ELECTRICITY_OUT_LOW,
     },
     {
-        "name": "Huisbaasje Energy Consumption Peak Today",
+        "name": "EnergyFlip Energy Consumption Peak Today",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY_IN,
@@ -74,7 +74,7 @@ SENSORS_INFO = [
         "precision": 3,
     },
     {
-        "name": "Huisbaasje Energy Consumption Off Peak Today",
+        "name": "EnergyFlip Energy Consumption Off Peak Today",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY_IN_LOW,
@@ -83,7 +83,7 @@ SENSORS_INFO = [
         "precision": 3,
     },
     {
-        "name": "Huisbaasje Energy Production Peak Today",
+        "name": "EnergyFlip Energy Production Peak Today",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY_OUT,
@@ -92,7 +92,7 @@ SENSORS_INFO = [
         "precision": 3,
     },
     {
-        "name": "Huisbaasje Energy Production Off Peak Today",
+        "name": "EnergyFlip Energy Production Off Peak Today",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY_OUT_LOW,
@@ -101,7 +101,7 @@ SENSORS_INFO = [
         "precision": 3,
     },
     {
-        "name": "Huisbaasje Energy Today",
+        "name": "EnergyFlip Energy Today",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY,
@@ -109,7 +109,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Energy This Week",
+        "name": "EnergyFlip Energy This Week",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY,
@@ -117,7 +117,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Energy This Month",
+        "name": "EnergyFlip Energy This Month",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY,
@@ -125,7 +125,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Energy This Year",
+        "name": "EnergyFlip Energy This Year",
         "device_class": SensorDeviceClass.ENERGY,
         "unit_of_measurement": ENERGY_KILO_WATT_HOUR,
         "source_type": SOURCE_TYPE_ELECTRICITY,
@@ -133,14 +133,14 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Current Gas",
+        "name": "EnergyFlip Current Gas",
         "unit_of_measurement": FLOW_CUBIC_METERS_PER_HOUR,
         "source_type": SOURCE_TYPE_GAS,
         "icon": "mdi:fire",
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Gas Today",
+        "name": "EnergyFlip Gas Today",
         "device_class": SensorDeviceClass.GAS,
         "unit_of_measurement": VOLUME_CUBIC_METERS,
         "source_type": SOURCE_TYPE_GAS,
@@ -150,7 +150,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Gas This Week",
+        "name": "EnergyFlip Gas This Week",
         "device_class": SensorDeviceClass.GAS,
         "unit_of_measurement": VOLUME_CUBIC_METERS,
         "source_type": SOURCE_TYPE_GAS,
@@ -160,7 +160,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Gas This Month",
+        "name": "EnergyFlip Gas This Month",
         "device_class": SensorDeviceClass.GAS,
         "unit_of_measurement": VOLUME_CUBIC_METERS,
         "source_type": SOURCE_TYPE_GAS,
@@ -170,7 +170,7 @@ SENSORS_INFO = [
         "precision": 1,
     },
     {
-        "name": "Huisbaasje Gas This Year",
+        "name": "EnergyFlip Gas This Year",
         "device_class": SensorDeviceClass.GAS,
         "unit_of_measurement": VOLUME_CUBIC_METERS,
         "source_type": SOURCE_TYPE_GAS,

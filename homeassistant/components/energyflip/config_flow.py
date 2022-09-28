@@ -1,7 +1,7 @@
-"""Config flow for Huisbaasje integration."""
+"""Config flow for EnergyFlip integration."""
 import logging
 
-from huisbaasje import Huisbaasje, HuisbaasjeConnectionException, HuisbaasjeException
+from energyflip import EnergyFlip, EnergyFlipConnectionException, EnergyFlipException
 import voluptuous as vol
 
 from homeassistant import config_entries
@@ -17,8 +17,8 @@ DATA_SCHEMA = vol.Schema(
 )
 
 
-class HuisbaasjeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Huisbaasje."""
+class EnergyFlipConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for EnergyFlip."""
 
     VERSION = 1
 
@@ -31,10 +31,10 @@ class HuisbaasjeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         try:
             user_id = await self._validate_input(user_input)
-        except HuisbaasjeConnectionException as exception:
+        except EnergyFlipConnectionException as exception:
             _LOGGER.warning(exception)
             errors["base"] = "cannot_connect"
-        except HuisbaasjeException as exception:
+        except EnergyFlipException as exception:
             _LOGGER.warning(exception)
             errors["base"] = "invalid_auth"
         except AbortFlow:
@@ -72,9 +72,9 @@ class HuisbaasjeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         username = user_input[CONF_USERNAME]
         password = user_input[CONF_PASSWORD]
 
-        huisbaasje = Huisbaasje(username, password)
+        energyflip = EnergyFlip(username, password)
 
-        # Attempt authentication. If this fails, an HuisbaasjeException will be thrown
-        await huisbaasje.authenticate()
+        # Attempt authentication. If this fails, an EnergyFlipException will be thrown
+        await energyflip.authenticate()
 
-        return huisbaasje.get_user_id()
+        return energyflip.get_user_id()

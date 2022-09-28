@@ -28,13 +28,13 @@ async def async_setup_entry(
     user_id = config_entry.data[CONF_ID]
 
     async_add_entities(
-        HuisbaasjeSensor(coordinator, user_id=user_id, **sensor_info)
+        EnergyFlipSensor(coordinator, user_id=user_id, **sensor_info)
         for sensor_info in SENSORS_INFO
     )
 
 
-class HuisbaasjeSensor(CoordinatorEntity, SensorEntity):
-    """Defines a Huisbaasje sensor."""
+class EnergyFlipSensor(CoordinatorEntity, SensorEntity):
+    """Defines a EnergyFlip sensor."""
 
     def __init__(
         self,
