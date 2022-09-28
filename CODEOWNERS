@@ -304,6 +304,8 @@ build.json @home-assistant/supervisor
 /tests/components/emulated_kasa/ @kbickar
 /homeassistant/components/energy/ @home-assistant/core
 /tests/components/energy/ @home-assistant/core
+/homeassistant/components/energyflip/ @dennisschroer
+/tests/components/energyflip/ @dennisschroer
 /homeassistant/components/enigma2/ @fbradyirl
 /homeassistant/components/enocean/ @bdurrer
 /tests/components/enocean/ @bdurrer
@@ -494,8 +496,6 @@ build.json @home-assistant/supervisor
 /tests/components/huawei_lte/ @scop @fphammerle
 /homeassistant/components/hue/ @balloob @marcelveldt
 /tests/components/hue/ @balloob @marcelveldt
-/homeassistant/components/huisbaasje/ @dennisschroer
-/tests/components/huisbaasje/ @dennisschroer
 /homeassistant/components/humidifier/ @home-assistant/core @Shulyaka
 /tests/components/humidifier/ @home-assistant/core @Shulyaka
 /homeassistant/components/hunterdouglas_powerview/ @bdraco @kingy444 @trullock
